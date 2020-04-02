@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import withGamesService from '../../HOC/withGamesService';
 import GamesList from '../../components/gamesList';
-import {fetchGames, fetchGenres} from '../../actions';
+import {fetchGames, fetchGenres, updateSearch, updateSort} from '../../actions';
 import Spinner from '../../components/spinner';
 import { gamesServiceType, gameType, genresList } from '../../prop-types';
-import Condtitions from '../../components/condtitions/';
+import Condtitions from '../../components/condtitions';
 
 const HomePage = ({
   games,
@@ -19,20 +19,48 @@ const HomePage = ({
   gamesService,
   fetchGames,
   fetchGenres,
+  updateSearch,
+  updateSort
 }) => {
   useEffect(() => {
     fetchGenres(gamesService.getGenres);
     fetchGames(gamesService.getGames);
   }, [fetchGames, gamesService, fetchGenres]);
 
-  console.log(genresList);
+  const performSearch = games => (
+    games.filter(game => game.name.toLowerCase().includes(search.toLowerCase()))
+  );
+
+  const performSort = games => {
+    switch (sort) {
+      case 'A-Z':
+        return games.sort((a, b) => {
+          if (a.name < b.name) return -1;
+          return 1;
+        });
+      case 'Z-A':
+        return games.sort((a, b) => {
+          if (a.name < b.name) return 1;
+          return -1;
+        });
+      default:
+        return games;
+    }
+  };
+
+  const filteredGames = performSort(performSearch(games));
 
   if (gamesLoading) return (<Spinner />);
 
   return (
     <div>
-      <Condtitions genresList={genresList} />
-      <GamesList games={games} />
+      <Condtitions
+        genresList={genresList}
+        onSearchChange={query => updateSearch(query)}
+        search={search}
+        onSortChange={query => updateSort(query)}
+      />
+      <GamesList games={filteredGames} />
     </div>
   );
 };
@@ -62,6 +90,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchGames: fetchGames(dispatch),
   fetchGenres: fetchGenres(dispatch),
+  updateSearch: query => dispatch(updateSearch(query)),
+  updateSort: query => dispatch(updateSort(query)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withGamesService(HomePage));

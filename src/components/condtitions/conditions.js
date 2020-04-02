@@ -6,8 +6,8 @@ const Condtitions = ({
   genresList,
   genre,
   search,
-  genreQuery,
-  onQueryChange,
+  sort,
+  onSortChange,
   onSearchChange,
   onGenreChange,
 }) => (
@@ -16,7 +16,13 @@ const Condtitions = ({
       <div className="form-group">
         <label htmlFor="sortSelect">
           <p>Sort by</p>
-          <select name="sortSelect" id="sortSelect" className="form-control">
+          <select
+            name="sortSelect"
+            id="sortSelect"
+            className="form-control"
+            value={sort}
+            onChange={e => onSortChange(e.target.value)}
+          >
             <option value="A-Z">A-Z</option>
             <option value="Z-A">Z-A</option>
             <option value="BEST">Rating best</option>
@@ -38,7 +44,14 @@ const Condtitions = ({
       <div className="form-group">
         <label htmlFor="searchInput">
           <p>Search</p>
-          <input type="text" placeholder="Search" name="searchInput" id="searchInput" />
+          <input
+            type="text"
+            placeholder="Search"
+            name="searchInput"
+            id="searchInput"
+            value={search}
+            onChange={e => { onSearchChange(e.target.value); }}
+          />
         </label>
       </div>
     </form>

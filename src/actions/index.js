@@ -1,9 +1,17 @@
-import {FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS, FETCH_GENRES_REQUEST, FETCH_GENRES_SUCCESS} from '../types';
+import {
+  FETCH_GAMES_REQUEST,
+  FETCH_GAMES_SUCCESS,
+  FETCH_GENRES_REQUEST,
+  FETCH_GENRES_SUCCESS,
+  UPDATE_SEARCH_CONDITION, UPDATE_SORT_CONDITION,
+} from '../types';
 
 export const gamesRequested = () => ({ type: FETCH_GAMES_REQUEST });
 export const gamesLoaded = games => ({ type: FETCH_GAMES_SUCCESS, payload: games });
 export const genresRequested = () => ({ type: FETCH_GENRES_REQUEST });
 export const genresLoaded = genres => ({ type: FETCH_GENRES_SUCCESS, payload: genres });
+export const updateSearch = query => ({ type: UPDATE_SEARCH_CONDITION, payload: query });
+export const updateSort = query => ({ type: UPDATE_SORT_CONDITION, payload: query });
 
 export const fetchGames = dispatch => getData => {
   dispatch(gamesRequested());
