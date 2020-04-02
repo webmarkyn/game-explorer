@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './GamesList.module.css';
+import {gameType} from '../../prop-types';
 
 const GamesList = ({ games }) => (
   <div className={styles.gamesList}>
@@ -10,7 +11,7 @@ const GamesList = ({ games }) => (
           <div className="col-lg-2" key={game.id}>
             <div className="game">
               <div className="game-pic">
-                <img src={game.backgroundImage} alt="game" />
+                {/*<img src={game.backgroundImage} alt="game" />*/}
               </div>
               <div className="game-info">
                 <p className="game-title">{game.name}</p>
@@ -34,15 +35,7 @@ const GamesList = ({ games }) => (
 );
 
 GamesList.propTypes = {
-  games: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    backgroundImage: PropTypes.string,
-    rating: PropTypes.number,
-    metacritic: PropTypes.number,
-    platforms: PropTypes.arrayOf(PropTypes.string),
-    genres: PropTypes.arrayOf(PropTypes.string),
-    tags: PropTypes.arrayOf(PropTypes.string),
-  })).isRequired,
+  games: PropTypes.arrayOf(gameType).isRequired,
 };
 
 export default GamesList;

@@ -23,10 +23,11 @@ class GameExplorerService {
   // eslint-disable-next-line class-methods-use-this
   transformGame(game) {
     const {
-      id, background_image: backgroundImage, rating, metacritic, platforms, genres, tags,
+      id, name, background_image: backgroundImage, rating, metacritic, platforms, genres, tags,
     } = game;
     return {
       id,
+      name,
       backgroundImage,
       rating,
       metacritic,
