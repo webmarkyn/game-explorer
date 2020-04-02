@@ -1,4 +1,4 @@
-import { FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS } from '../actions';
+import { FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS } from '../types';
 
 const initState = {
   data: [],
