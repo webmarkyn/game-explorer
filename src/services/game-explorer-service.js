@@ -2,6 +2,7 @@ class GameExplorerService {
   constructor() {
     this.baseURL = 'https://api.rawg.io/api';
     this.getGames = this.getGames.bind(this);
+    this.getGenres = this.getGenres.bind(this);
   }
 
   async getService(url) {
@@ -20,6 +21,11 @@ class GameExplorerService {
     return this.transformGame(data);
   }
 
+  async getGenres() {
+    const data = await this.getService('genres');
+    return data.results.map(this.transformGenre);
+  }
+
   // eslint-disable-next-line class-methods-use-this
   transformGame(game) {
     const {
@@ -32,8 +38,20 @@ class GameExplorerService {
       rating,
       metacritic,
       platforms: platforms.map(platform => platform.platform.name),
-      genres: genres.map(genre => genre.name),
+      genres: genres.map(genre => ({
+        id: genre.id,
+        name: genre.name,
+      })),
       tags: tags.map(tag => tag.name),
+    };
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  transformGenre(genre) {
+    const { id, name } = genre;
+    return {
+      id,
+      name,
     };
   }
 }

@@ -11,7 +11,7 @@ import GamesServiceContext from './contexts/gamesServiceContext';
 
 
 const gamesService = new GameExplorerService();
-gamesService.getGames().then(data => console.log(data));
+gamesService.getGenres().then(data => console.log(data));
 
 const store = createStore(rootReducer);
 

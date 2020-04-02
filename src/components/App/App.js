@@ -9,11 +9,13 @@ const App = () => (
   <div className="app">
     <Router>
       <Header />
-      <Switch>
-        <Route path="/">
-          <HomePage />
-        </Route>
-      </Switch>
+      <div className="container">
+        <Switch>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+      </div>
     </Router>
   </div>
 );
