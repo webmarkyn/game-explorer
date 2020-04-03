@@ -67,7 +67,10 @@ const Condtitions = ({
 );
 
 Condtitions.propTypes = {
-  genresList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genresList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  })).isRequired,
   genre: PropTypes.string.isRequired,
   search: PropTypes.string.isRequired,
   sort: PropTypes.string.isRequired,
