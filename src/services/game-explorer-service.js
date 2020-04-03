@@ -12,7 +12,7 @@ class GameExplorerService {
   }
 
   async getGames() {
-    const data = await this.getService('games');
+    const data = await this.getService('games?page_size=50');
     return data.results.map(this.transformGame);
   }
 
@@ -38,10 +38,7 @@ class GameExplorerService {
       rating,
       metacritic,
       platforms: platforms.map(platform => platform.platform.name),
-      genres: genres.map(genre => ({
-        id: genre.id,
-        name: genre.name,
-      })),
+      genres: genres.map(genre => genre.name),
       tags: tags.map(tag => tag.name),
     };
   }

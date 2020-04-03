@@ -26,14 +26,20 @@ const Condtitions = ({
             <option value="A-Z">A-Z</option>
             <option value="Z-A">Z-A</option>
             <option value="BEST">Rating best</option>
-            <option value="RATING WORST">Rating worst</option>
+            <option value="WORST">Rating worst</option>
           </select>
         </label>
       </div>
       <div className="form-group">
         <label htmlFor="genreSelect">
           <p>Genre</p>
-          <select name="genreSelect" id="genreSelect">
+          <select
+            name="genreSelect"
+            id="genreSelect"
+            className="form-control"
+            value={genre}
+            onChange={e => onGenreChange(e.target.value)}
+          >
             <option value="All">All</option>
             {genresList.map(genre => (
               <option value={genre.name} key={genre.id}>{genre.name}</option>
@@ -45,6 +51,7 @@ const Condtitions = ({
         <label htmlFor="searchInput">
           <p>Search</p>
           <input
+            className="form-control"
             type="text"
             placeholder="Search"
             name="searchInput"

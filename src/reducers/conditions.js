@@ -9,7 +9,7 @@ import {
 const initState = {
   sort: 'A-Z',
   genresList: [],
-  genreQuery: '',
+  genreQuery: 'All',
   search: '',
   loading: true,
 };

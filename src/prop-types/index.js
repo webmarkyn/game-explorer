@@ -12,10 +12,7 @@ export const gameType = PropTypes.shape({
   rating: PropTypes.number,
   metacritic: PropTypes.number,
   platforms: PropTypes.arrayOf(PropTypes.string),
-  genres: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.name,
-  })),
+  genres: PropTypes.arrayOf(PropTypes.string),
   tags: PropTypes.arrayOf(PropTypes.string),
 });
 

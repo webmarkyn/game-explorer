@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import withGamesService from '../../HOC/withGamesService';
 import GamesList from '../../components/gamesList';
-import {fetchGames, fetchGenres, updateSearch, updateSort} from '../../actions';
+import {
+  fetchGames, fetchGenres, updateGenre, updateSearch, updateSort,
+} from '../../actions';
 import Spinner from '../../components/spinner';
 import { gamesServiceType, gameType, genresList } from '../../prop-types';
 import Condtitions from '../../components/condtitions';
@@ -20,7 +22,8 @@ const HomePage = ({
   fetchGames,
   fetchGenres,
   updateSearch,
-  updateSort
+  updateSort,
+  updateGenre,
 }) => {
   useEffect(() => {
     fetchGenres(gamesService.getGenres);
@@ -30,6 +33,11 @@ const HomePage = ({
   const performSearch = games => (
     games.filter(game => game.name.toLowerCase().includes(search.toLowerCase()))
   );
+
+  const performFilter = games => {
+    if (genreQuery === 'All') return games;
+    return games.filter(game => game.genres.includes(genreQuery));
+  };
 
   const performSort = games => {
     switch (sort) {
@@ -43,12 +51,22 @@ const HomePage = ({
           if (a.name < b.name) return 1;
           return -1;
         });
+      case 'BEST':
+        return games.sort((a, b) => {
+          if (a.rating < b.rating) return 1;
+          return -1;
+        });
+      case 'WORST':
+        return games.sort((a, b) => {
+          if (a.rating > b.rating) return 1;
+          return -1;
+        });
       default:
         return games;
     }
   };
 
-  const filteredGames = performSort(performSearch(games));
+  const filteredGames = performFilter(performSort(performSearch(games)));
 
   if (gamesLoading) return (<Spinner />);
 
@@ -59,8 +77,12 @@ const HomePage = ({
         onSearchChange={query => updateSearch(query)}
         search={search}
         onSortChange={query => updateSort(query)}
+        onGenreChange={newGenre => updateGenre(newGenre)}
+        genre={genreQuery}
       />
-      <GamesList games={filteredGames} />
+      {filteredGames.length === 0
+        ? <h3 className="text-center">Sorry, but we found nothing :(</h3>
+        : <GamesList games={filteredGames} />}
     </div>
   );
 };
@@ -92,6 +114,7 @@ const mapDispatchToProps = dispatch => ({
   fetchGenres: fetchGenres(dispatch),
   updateSearch: query => dispatch(updateSearch(query)),
   updateSort: query => dispatch(updateSort(query)),
+  updateGenre: genre => dispatch(updateGenre(genre)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withGamesService(HomePage));

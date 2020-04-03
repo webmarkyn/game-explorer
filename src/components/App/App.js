@@ -11,6 +11,9 @@ const App = () => (
       <Header />
       <div className="container">
         <Switch>
+          <Route path="/game/:id">
+            <h1>Hello</h1>
+          </Route>
           <Route path="/">
             <HomePage />
           </Route>
