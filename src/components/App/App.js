@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import './App.css';
+import styles from './App.module.css';
 import Header from '../header/header';
 import HomePage from '../../containers/homePage/home-page';
 import GameInfoPage from '../../containers/gameInfoPage';
 
 const App = () => (
-  <div className="app">
+  <div className={styles.app}>
     <Router>
       <Header />
       <div className="container">

@@ -7,6 +7,7 @@ import styles from './GameInfoPage.module.css';
 import {fetchGames, fetchSelectedGame} from '../../actions';
 import Spinner from '../../components/spinner';
 import GamesList from '../../components/gamesList';
+import GameInfo from '../../components/gameInfo';
 
 const GameInfoPage = ({
   games,
@@ -26,10 +27,13 @@ const GameInfoPage = ({
 
   if (gamesLoading || selectedGameLoading) return <Spinner />;
 
+  console.log(selectedGame)
+
   const filteredGames = games.filter(game => game.name !== selectedGame.name);
 
   return (
     <div className="games-info-page">
+      <GameInfo game={selectedGame} />
       <h2>Games of similar genre</h2>
       <GamesList games={filteredGames} />
     </div>
