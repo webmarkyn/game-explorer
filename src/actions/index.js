@@ -23,6 +23,6 @@ export const fetchGames = dispatch => getData => {
 export const fetchGenres = dispatch => getData => {
   dispatch(genresRequested());
   getData()
-    .then(genres => {console.log(genres);dispatch(genresLoaded((genres)))})
+    .then(genres => dispatch(genresLoaded((genres))))
     .catch(err => new Error(`Error occurred ${err}`));
 };
