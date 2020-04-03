@@ -1,18 +1,23 @@
-import {FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS} from '../types';
+import {
+  FETCH_GAMES_REQUEST,
+  FETCH_GAMES_SUCCESS,
+  FETCH_SELECTED_GAME_REQUEST,
+  FETCH_SELECTED_GAME_SUCCESS,
+} from '../types';
 
 const initState = {
   game: {},
-  loading: true,
+  loading: false,
 };
 
 const selectedGameReducer = (state = initState, action) => {
   switch (action.type) {
-    case (FETCH_GAMES_REQUEST):
+    case (FETCH_SELECTED_GAME_REQUEST):
       return {
         ...state,
         loading: true,
       };
-    case (FETCH_GAMES_SUCCESS):
+    case (FETCH_SELECTED_GAME_SUCCESS):
       return {
         ...state,
         game: action.payload,
