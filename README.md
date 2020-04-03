@@ -14,6 +14,7 @@ This is the app where you can view games, it's information, ratings and games of
 - CSS Modules
 - React Router
 - Webpack
+- Bootstrap
 - PropTypes
 
 ## Getting Started
