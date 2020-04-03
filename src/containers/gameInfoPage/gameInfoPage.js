@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import withGamesService from '../../HOC/withGamesService';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import styles from './GameInfoPage.module.css';
-import {fetchGames, fetchSelectedGame} from '../../actions';
+import withGamesService from '../../HOC/withGamesService';
+import { fetchGames, fetchSelectedGame } from '../../actions';
 import Spinner from '../../components/spinner';
 import GamesList from '../../components/gamesList';
 import GameInfo from '../../components/gameInfo';
+import { gamesServiceType, gameType } from '../../prop-types';
 
 const GameInfoPage = ({
   games,
@@ -16,7 +17,7 @@ const GameInfoPage = ({
   selectedGameLoading,
   fetchGames,
   fetchSelectedGame,
-  gamesService
+  gamesService,
 }) => {
   const { id } = useParams();
 
@@ -27,17 +28,25 @@ const GameInfoPage = ({
 
   if (gamesLoading || selectedGameLoading) return <Spinner />;
 
-  console.log(selectedGame)
-
   const filteredGames = games.filter(game => game.name !== selectedGame.name);
 
   return (
     <div className="games-info-page">
       <GameInfo game={selectedGame} />
-      <h2>Games of similar genre</h2>
+      <h2 className="my-4">Games of similar genre</h2>
       <GamesList games={filteredGames} />
     </div>
   );
+};
+
+GameInfoPage.propTypes = {
+  games: PropTypes.arrayOf(gameType).isRequired,
+  gamesLoading: PropTypes.bool.isRequired,
+  selectedGame: (gameType).isRequired,
+  selectedGameLoading: PropTypes.bool.isRequired,
+  fetchGames: PropTypes.func.isRequired,
+  fetchSelectedGame: PropTypes.func.isRequired,
+  gamesService: (gamesServiceType).isRequired,
 };
 
 const mapStateToProps = state => ({

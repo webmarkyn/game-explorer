@@ -1,0 +1,13 @@
+.conditions {
+    width: 100%;
+    margin: 30px 0;
+}
+
+.conditions label {
+    display: flex;
+    align-items: center;
+}
+
+.conditions label p {
+    margin: 0 10px;
+}

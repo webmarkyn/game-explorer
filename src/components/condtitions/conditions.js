@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Condtitions.module.css';
 
@@ -11,11 +12,11 @@ const Condtitions = ({
   onSearchChange,
   onGenreChange,
 }) => (
-  <div className="conditions">
-    <form className="d-flex justify-content-around">
-      <div className="form-group">
+  <div className={styles.conditions}>
+    <form className="d-flex justify-content-around flex-column flex-md-row">
+      <div className="form-group align-items-center">
         <label htmlFor="sortSelect">
-          <p>Sort by</p>
+          <p className="d-none d-lg-block">Sort</p>
           <select
             name="sortSelect"
             id="sortSelect"
@@ -30,9 +31,9 @@ const Condtitions = ({
           </select>
         </label>
       </div>
-      <div className="form-group">
+      <div className="form-group align-items-center">
         <label htmlFor="genreSelect">
-          <p>Genre</p>
+          <p className="d-none d-lg-block">Genre</p>
           <select
             name="genreSelect"
             id="genreSelect"
@@ -47,9 +48,9 @@ const Condtitions = ({
           </select>
         </label>
       </div>
-      <div className="form-group">
+      <div className="form-group align-items-center">
         <label htmlFor="searchInput">
-          <p>Search</p>
+          <p className="d-none d-lg-block">Search</p>
           <input
             className="form-control"
             type="text"
@@ -64,5 +65,15 @@ const Condtitions = ({
     </form>
   </div>
 );
+
+Condtitions.propTypes = {
+  genresList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genre: PropTypes.string.isRequired,
+  search: PropTypes.string.isRequired,
+  sort: PropTypes.string.isRequired,
+  onSortChange: PropTypes.func.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
+  onGenreChange: PropTypes.func.isRequired,
+};
 
 export default Condtitions;
