@@ -8,11 +8,13 @@ export const genresList = PropTypes.arrayOf(PropTypes.shape({
 export const gameType = PropTypes.shape({
   id: PropTypes.number,
   name: PropTypes.string,
+  description: PropTypes.string,
   backgroundImage: PropTypes.string,
   rating: PropTypes.number,
   metacritic: PropTypes.number,
   platforms: PropTypes.arrayOf(PropTypes.string),
   genres: PropTypes.arrayOf(PropTypes.string),
+  mainGenreId: PropTypes.number,
   tags: PropTypes.arrayOf(PropTypes.string),
 });
 

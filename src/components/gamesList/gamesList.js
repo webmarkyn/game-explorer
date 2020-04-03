@@ -9,7 +9,7 @@ const GamesList = ({ games }) => (
     <div className="row">
       {games.map(game => (
         <div className="col-lg-2" key={game.id}>
-          <Link to={`game/${game.id}`}>
+          <Link to={`/game/${game.id}`}>
             <div className="game">
               <div className="game-pic">
                 <img src={game.backgroundImage} alt="game" className="mw-100" />

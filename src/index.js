@@ -13,7 +13,10 @@ import GamesServiceContext from './contexts/gamesServiceContext';
 const gamesService = new GameExplorerService();
 gamesService.getGames(1).then(data => console.log(data));
 
-const store = createStore(rootReducer);
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
 
 ReactDOM.render(
   <GamesServiceContext.Provider value={gamesService}>
