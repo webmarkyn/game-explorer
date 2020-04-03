@@ -33,16 +33,14 @@ export const fetchGenres = dispatch => getData => {
     .catch(err => new Error(`Error occurred ${err}`));
 };
 
-export const fetchSelectedGame = dispatch => (getData, id) => {
-  return new Promise((res, rej) => {
-    dispatch(selectedGameRequested());
-    getData(id)
-      .then(data => {
-        dispatch(selectedGameLoaded(data));
-        res(data);
-      })
-      .catch(err => {
-        rej(new Error((`Error occurred ${err}`)));
-      });
-  });
-};
+export const fetchSelectedGame = dispatch => (getData, id) => new Promise((res, rej) => {
+  dispatch(selectedGameRequested());
+  getData(id)
+    .then(data => {
+      dispatch(selectedGameLoaded(data));
+      res(data);
+    })
+    .catch(err => {
+      rej(new Error((`Error occurred ${err}`)));
+    });
+});

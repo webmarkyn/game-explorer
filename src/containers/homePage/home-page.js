@@ -17,7 +17,6 @@ const HomePage = ({
   sort,
   search,
   genresList,
-  conditionsLoading,
   gamesService,
   fetchGames,
   fetchGenres,
@@ -76,6 +75,7 @@ const HomePage = ({
         genresList={genresList}
         onSearchChange={query => updateSearch(query)}
         search={search}
+        sort={sort}
         onSortChange={query => updateSort(query)}
         onGenreChange={newGenre => updateGenre(newGenre)}
         genre={genreQuery}
@@ -94,9 +94,12 @@ HomePage.propTypes = {
   sort: PropTypes.string.isRequired,
   search: PropTypes.string.isRequired,
   genresList: (genresList).isRequired,
-  conditionsLoading: PropTypes.bool.isRequired,
   gamesService: PropTypes.shape(gamesServiceType).isRequired,
   fetchGames: PropTypes.func.isRequired,
+  fetchGenres: PropTypes.func.isRequired,
+  updateSearch: PropTypes.func.isRequired,
+  updateSort: PropTypes.func.isRequired,
+  updateGenre: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

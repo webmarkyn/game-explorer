@@ -16,12 +16,21 @@ const GameInfo = ({ game }) => (
         <div className="game-main-info">
           <p className="h1 font-weight-bold">{game.name}</p>
           <p className="h5">
-            <span className="badge badge-light h2">Metacritic: {game.metacritic}</span>
+            <span className="badge badge-light h2">
+              Metacritic:
+              {game.metacritic}
+            </span>
           </p>
           <p>
             Platforms:
             {
-              game.platforms ? game.platforms.map(platform => <span> {platform} </span>) : null
+              game.platforms ? game.platforms.map(platform => (
+                <span key={platform}>
+                  {' '}
+                  {platform}
+                  {' '}
+                </span>
+              )) : null
             }
           </p>
           {ReactHtmlParser(game.description)}
