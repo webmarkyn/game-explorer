@@ -1,0 +1,16 @@
+.header {
+    background: #212121
+}
+.header a {
+    color: #fff;
+    text-shadow: 0 2px 2px red;
+    font-weight: bold;
+    transition: .4s ease;
+    font-family: Impact, sans-serif;
+    letter-spacing: 2px;
+}
+
+.header a:hover {
+    text-decoration: none;
+    text-shadow: -4px 4px 2px red;
+}

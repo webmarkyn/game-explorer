@@ -1,0 +1,22 @@
+.gamesList {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.game {
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #fafafa;
+    margin-bottom: 30px;
+    color: #212121;
+    transition: .3s ease-in-out;
+    height: 100%;
+}
+
+.game:hover {
+    transform: scale(1.1);
+}
+
+a:hover {
+    text-decoration: none;
+}
