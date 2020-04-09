@@ -2,6 +2,8 @@
 
 This is the app where you can view games, it's information, ratings and games of similar genre. Also you can set search conditions and sort, filter by genre.
 
+![screenshot](./screenshot.png)
+
 ## Live Demo
 
 [Live Demo Link](http://game-explorer.herokuapp.com/)
