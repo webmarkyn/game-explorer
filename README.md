@@ -1,6 +1,6 @@
 # GameExplorer (React Capstone Project)
 
-This is the app where you can view games, it's information, ratings and games of similar genre. Also you can set search conditions and sort, filter by genre.
+This is the app where you can view different games, it's information, ratings, and games of similar genre. Also you can set search conditions and sort, filter by genre.
 
 ![screenshot](./screenshot.png)
 
