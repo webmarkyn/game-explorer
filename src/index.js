@@ -9,6 +9,8 @@ import rootReducer from './reducers';
 import GameExplorerService from './services/game-explorer-service';
 import GamesServiceContext from './contexts/gamesServiceContext';
 
+import './index.css';
+
 
 const gamesService = new GameExplorerService();
 

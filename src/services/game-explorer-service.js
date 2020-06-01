@@ -13,7 +13,9 @@ class GameExplorerService {
   }
 
   async getGames(genreId = null) {
-    const url = genreId ? `games?page_size=10&genres=${genreId}` : 'games?page_size=50';
+    const url = genreId
+      ? `games?page_size=9&genres=${genreId}`
+      : 'games?page_size=50';
     const data = await this.getService(url);
     return data.results.map(this.transformGame);
   }

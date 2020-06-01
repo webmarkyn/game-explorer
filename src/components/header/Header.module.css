@@ -1,6 +1,11 @@
 .header {
     background: #212121
 }
+
+.header h1 {
+    margin-bottom: 0;
+}
+
 .header a {
     color: #fff;
     text-shadow: 0 2px 2px red;

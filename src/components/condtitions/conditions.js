@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Condtitions.module.css';
+import { Select } from 'antd';
+import Search from 'antd/es/input/Search';
 
 const Condtitions = ({
   genresList,
@@ -17,48 +19,51 @@ const Condtitions = ({
       <div className="form-group align-items-center">
         <label htmlFor="sortSelect">
           <p className="d-none d-lg-block">Sort</p>
-          <select
+          <Select
             name="sortSelect"
             id="sortSelect"
-            className="form-control"
             value={sort}
-            onChange={e => onSortChange(e.target.value)}
+            style={{ width: 120 }}
+            onChange={value => onSortChange(value)}
           >
             <option value="A-Z">A-Z</option>
             <option value="Z-A">Z-A</option>
             <option value="BEST">Rating best</option>
             <option value="WORST">Rating worst</option>
-          </select>
+          </Select>
         </label>
       </div>
       <div className="form-group align-items-center">
         <label htmlFor="genreSelect">
           <p className="d-none d-lg-block">Genre</p>
-          <select
+          <Select
             name="genreSelect"
             id="genreSelect"
-            className="form-control"
             value={genre}
-            onChange={e => onGenreChange(e.target.value)}
+            style={{ width: 120 }}
+            onChange={value => onGenreChange(value)}
           >
             <option value="All">All</option>
             {genresList.map(genre => (
-              <option value={genre.name} key={genre.id}>{genre.name}</option>
+              <option value={genre.name} key={genre.id}>
+                {genre.name}
+              </option>
             ))}
-          </select>
+          </Select>
         </label>
       </div>
       <div className="form-group align-items-center">
         <label htmlFor="searchInput">
           <p className="d-none d-lg-block">Search</p>
-          <input
-            className="form-control"
+          <Search
             type="text"
             placeholder="Search"
             name="searchInput"
             id="searchInput"
             value={search}
-            onChange={e => { onSearchChange(e.target.value); }}
+            onChange={event => {
+              onSearchChange(event.target.value);
+            }}
           />
         </label>
       </div>
@@ -67,10 +72,12 @@ const Condtitions = ({
 );
 
 Condtitions.propTypes = {
-  genresList: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  })).isRequired,
+  genresList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    })
+  ).isRequired,
   genre: PropTypes.string.isRequired,
   search: PropTypes.string.isRequired,
   sort: PropTypes.string.isRequired,

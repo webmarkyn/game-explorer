@@ -3,6 +3,21 @@
     width: 100%;
 }
 
+.gameCard {
+    border-top: none !important;
+    transform: scale(1);
+    transition: transform .2s !important;
+}
+
+.gameCardCover {
+    height: 150px;
+    object-fit: cover;
+}
+
+.gameCard:hover {
+    transform: scale(1.05);
+}
+
 .game {
     overflow: hidden;
     border-radius: 10px;
