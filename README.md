@@ -50,4 +50,5 @@ To get a local copy up and running follow these simple example steps.
 - Add more games
 - Add library of games
 - User Profile
+- Improve perfomance
 
