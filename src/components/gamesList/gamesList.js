@@ -33,13 +33,7 @@ const GamesList = ({ games }) => {
             <Link to={`/game/${game.id}`}>
               <Card
                 hoverable
-                cover={
-                  <img
-                    src={game.backgroundImage}
-                    alt="game-cover"
-                    className={styles.gameCardCover}
-                  />
-                }
+                cover={<img src={game.backgroundImage} alt="game-cover" />}
                 className={styles.gameCard}
               >
                 <Card.Meta

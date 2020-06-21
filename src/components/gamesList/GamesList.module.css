@@ -14,9 +14,9 @@
     object-fit: cover;
 }
 
-.gameCard:hover {
-    transform: scale(1.05);
-}
+/*.gameCard:hover {*/
+/*    transform: scale(1.05);*/
+/*}*/
 
 .game {
     overflow: hidden;

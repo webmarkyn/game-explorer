@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Condtitions.module.css';
 import { Select } from 'antd';
 import Search from 'antd/es/input/Search';
+import styles from './Condtitions.module.css';
 
 const Condtitions = ({
   genresList,
