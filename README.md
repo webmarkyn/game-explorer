@@ -44,3 +44,11 @@ To get a local copy up and running follow these simple example steps.
 - Linkedin: [linkedin](https://www.linkedin.com/in/mark-baidebura/)
 - Twitter: [@webmarkyn](https://twitter.com/webmarkyn)
 
+## Future updates  
+
+- Improve UI
+- Add more games
+- Add library of games
+- User Profile
+- Improve perfomance
+
