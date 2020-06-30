@@ -16,7 +16,7 @@ const GamesList = ({ games }) => {
         grid={{
           gutter: 16,
           lg: 4,
-          column: 6,
+          column: 4,
           md: 2,
           sm: 2,
           xs: 1,
